@@ -1,0 +1,45 @@
+# Binaries for programs and plugins
+*.exe
+*.exe~
+*.dll
+*.so
+*.dylib
+
+# Output of the go tool
+*.out
+
+# Test binary, build and coverage files
+*.test
+*.prof
+*.cov
+
+# Local and dependency vendor directories
+/vendor/
+/vendor/**
+
+# Generated files
+*.gen.go
+
+# IDE or editor-specific files
+.vscode/
+.idea/
+*.swp
+*.swo
+*.DS_Store
+
+# Logs
+*.log
+
+# Temporary files
+*.tmp
+*.bak
+*.old
+*.orig
+
+# Build artifacts
+bin/
+build/
+dist/
+
+# Go module files (if generated)
+go.sum
