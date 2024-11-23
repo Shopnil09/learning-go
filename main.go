@@ -1,6 +1,8 @@
 package main
 
-import "fmt" // refer to documentation for what packages contain what types of functions
+import (
+	"fmt" // refer to documentation for what packages contain what types of functions
+)
 
 func main() {
 	// if you don't use a package or variable, Go will throw an error to avoid using dead code
@@ -29,7 +31,10 @@ func main() {
 	// just initializing the variable will throw a warning so you need to define the data types
 	// you need to tell Go Compiler the data type when declaring the variable--either by assigning a value or by declaring a type
 
-	// infinite loop
+	// infinite loop--this is an issue since there is a possibility the remainingTickets could go to negative and the loop will still run
+	// this can be resolved using break statements or using conditionals inside for-loop e.g. see example below
+	// for remainingTickets > 0 && len(bookings) < 50 {
+	// }
 	for {
 		// for fmt.Scan() we need to understand pointer. What is a pointer?
 		// a pointer is a variable that points to the memory address of another variable
@@ -47,6 +52,11 @@ func main() {
 		fmt.Scan(&userTickets)
 
 		// subtract the remaining ticket with the amount the user has requested to get the next remaining tickets
+		if userTickets > remainingTickets {
+			fmt.Printf("We only have %v tickets remaining, please try again!", remainingTickets)
+			// we should not break but skip the whole logic below and in Go 'continue' does that
+			continue
+		}
 		remainingTickets = remainingTickets - userTickets
 		// arrays and slices are common data structures in Go programming language
 		// cannot mix types in this array
@@ -57,5 +67,20 @@ func main() {
 		fmt.Printf("Whole array: %v\n", bookings)
 		// fmt.Printf("The first value: %v\n", bookings[0])
 		// loops are simplified in Go--you only have a for loop and you can use it for various use cases
+		// for-each loop to iterate over each list--syntax is provided below
+		// emailName := []string{}
+		// for index, booking := range bookings { // iterate over index and element from the list bookings
+		// 	// logic
+		// }
+
+		// NOTE-sometimes there are times where you don't have to use a variable so you can use a underscore to satisfy that
+		// for _, booking := range bookings {
+		// 	// logic
+		// }
+		if remainingTickets == 0 {
+			fmt.Println("Our conference is booked out. Come back next year")
+			// breaking the loop if the condition holds true
+			break
+		}
 	}
 }
